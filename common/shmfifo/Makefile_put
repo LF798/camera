@@ -1,0 +1,26 @@
+CC := $(shell echo ${GSF_CC})
+AR := $(shell echo ${GSF_AR})
+CFLAGS := $(shell echo ${GSF_CFLAGS})
+LDFLAGS := -g $(shell echo ${GSF_LDFLAGS}) $(shell echo ${GSF_EXECFLAGS})
+TARG := bin/put.exe
+
+#============================================================= 
+
+INCS := -I./inc
+        
+SRCS := test/put.c
+OBJS := $(patsubst %.c, %.o, $(SRCS))
+
+LIBS += -L./lib/  -lcfifo -lm -lpthread
+
+$(TARG): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+
+DEPS := $(patsubst %.o, %.d, $(OBJS))
+-include $(DEPS)
+.c.o:
+	$(CC) $(CFLAGS) -c -MMD $< $(INCS) -o $@
+  
+.Phony: clean
+clean:
+	-rm $(TARG) $(OBJS) $(DEPS) src/*.bak -rf
