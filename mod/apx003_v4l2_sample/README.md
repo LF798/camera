@@ -205,9 +205,9 @@ static int process_evt2_packet(const PacketHeader_t* header,
 ---
 
 
-## 五、使用说明
+## 二、使用说明
 
-### 5.1 编译
+### 2.1 编译
 
 **发送端（RK3588）**：
 ```bash
@@ -223,7 +223,7 @@ make evs_receiver
 # 生成: bin/evs_tcp_receiver.exe
 ```
 
-### 5.2 运行
+### 2.2 运行
 
 **步骤1：在PC上启动接收端**
 ```bash
@@ -240,7 +240,7 @@ make evs_receiver
 #                                  ↑PC IP      ↑端口 ↑30ms窗口
 ```
 
-### 5.3 参数说明
+### 2.3 参数说明
 
 **发送端参数**：
 - `server_ip`：PC接收端IP地址（必需）
@@ -250,7 +250,7 @@ make evs_receiver
 **接收端参数**：
 - `port`：监听端口（可选，默认8888）
 
-### 5.4 输出示例
+### 2.4 输出示例
 
 **发送端输出**：
 ```
